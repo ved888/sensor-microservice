@@ -1,0 +1,177 @@
+basePath: /
+definitions:
+  model.EditSensorsRequest:
+    properties:
+      value:
+        type: number
+    type: object
+host: localhost:8081
+info:
+  contact: {}
+  description: This is the API documentation for Microservice B (Data Receiver / API
+    Service)
+  title: sensor-microservice-b
+  version: "1.0"
+paths:
+  /sensors:
+    delete:
+      consumes:
+      - application/json
+      description: 'This endpoint deletes sensor readings from the database.You can
+        filter records by `id1`, `id2`, or by a time range (`from`, `to`).You can
+        also combine filters (e.g., ID1 + time range).Time parameters must be in RFC3339
+        format (UTC).Example: `2025-09-06T15:04:05Z`If no filters are provided, **no
+        rows will be deleted**.'
+      parameters:
+      - description: Filter by ID1 (string identifier)
+        example: '"A"'
+        in: query
+        name: id1
+        type: string
+      - description: Filter by ID2 (integer identifier)
+        example: 1
+        in: query
+        name: id2
+        type: integer
+      - description: Filter from timestamp (RFC3339 format)
+        example: '"2025-09-06T10:00:00Z"'
+        in: query
+        name: from
+        type: string
+      - description: Filter to timestamp (RFC3339 format)
+        example: '"2025-09-06T12:00:00Z"'
+        in: query
+        name: to
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Number of deleted rows, e.g. {\"deleted\": 3}'
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: 'Internal server error, e.g. {\"error\": \"database failure\"}'
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete sensor readings with filters
+      tags:
+      - MicroserviceB
+    get:
+      consumes:
+      - application/json
+      description: 'This endpoint retrieves sensor readings from the database.You
+        can filter results by `id1`, `id2`, or by a time range (`from`, `to`).You
+        can also combine filters (e.g., ID1 + time range).Pagination is supported
+        via `page` and `limit` query parameters.- `page`: Page number starting from
+        1- `limit`: Number of records per page (default: 10) Time parameters must
+        be in RFC3339 format (UTC). Example: `2025-09-06T15:04:05Z`'
+      parameters:
+      - description: Filter by ID1 (string identifier)
+        example: '"A"'
+        in: query
+        name: id1
+        type: string
+      - description: Filter by ID2 (integer identifier)
+        example: 1
+        in: query
+        name: id2
+        type: integer
+      - description: Filter from timestamp (RFC3339 format)
+        example: '"2025-09-06T10:00:00Z"'
+        in: query
+        name: from
+        type: string
+      - description: Filter to timestamp (RFC3339 format)
+        example: '"2025-09-06T12:00:00Z"'
+        in: query
+        name: to
+        type: string
+      - default: 1
+        description: Page number (starting from 1)
+        example: 1
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Page size (number of records per page)
+        example: 10
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Paginated sensor readings with metadata
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Retrieve sensor readings with filters
+      tags:
+      - MicroserviceB
+    patch:
+      consumes:
+      - application/json
+      description: 'This endpoint allows updating sensor values based on optional
+        filters such as `id1`, `id2`, and a time range (`from`, `to`).If no filters
+        are provided, no rows will be updated.Time parameters should be provided in
+        RFC3339 format (UTC).Example time format: `2025-09-06T15:04:05Z`'
+      parameters:
+      - description: Filter by ID1 (string identifier)
+        example: '"A"'
+        in: query
+        name: id1
+        type: string
+      - description: Filter by ID2 (integer identifier)
+        example: "1"
+        in: query
+        name: id2
+        type: string
+      - description: Start timestamp in RFC3339 format (e.g., 2025-09-06T10:00:00Z)
+        in: query
+        name: from
+        type: string
+      - description: End timestamp in RFC3339 format (e.g., 2025-09-06T12:00:00Z)
+        in: query
+        name: to
+        type: string
+      - description: Sensor update request payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/model.EditSensorsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Number of updated rows, e.g. {\"updated\": 5}'
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: 'Invalid request body, e.g. {\"error\": \"invalid body\"}'
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: 'Internal server error, e.g. {\"error\": \"database failure\"}'
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update sensor readings values with filters
+      tags:
+      - MicroserviceB
+swagger: "2.0"

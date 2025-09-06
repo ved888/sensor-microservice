@@ -12,15 +12,25 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
+	_ "microservice-a/docs"
 )
 
+// @title sensor-microservice-a
+// @version 1.0
+// @description This is the API documentation for Microservice A (Data Generator)
+// @host localhost:8080
+// @BasePath /
 func main() {
 	gen := grpcclient.NewGenerator("localhost:50051", 1*time.Second)
 	gen.Start("Temperature", "A", "1")
 
 	e := echo.New()
 	h := httpHandler.NewHandler(gen)
-	e.GET("/config/frequency", h.UpdateFrequency)
+	e.POST("/frequency", h.UpdateFrequency)
+
+	//	Swagger UI endpoint
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	// Start server in a goroutine
 	go func() {
