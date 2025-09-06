@@ -13,3 +13,8 @@ type SensorReading struct {
 	UpdatedAt  *time.Time `db:"updated_at" json:"updated_at,omitempty"`
 	ArchivedAt *time.Time `db:"archived_at" json:"archived_at,omitempty"`
 }
+
+// EditSensorsRequest represents the payload for updating sensor values
+type EditSensorsRequest struct {
+	Value float64 `json:"value"`
+}

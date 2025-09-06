@@ -14,8 +14,15 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
+	echoSwagger "github.com/swaggo/echo-swagger"
+	_ "microservice-b/docs"
 )
 
+// @title sensor-microservice-b
+// @version 1.0
+// @description This is the API documentation for Microservice B (Data Receiver / API Service)
+// @host localhost:8081
+// @BasePath /
 func main() {
 	// Structured logger
 	log := logrus.New()
@@ -30,10 +37,10 @@ func main() {
 
 	sensorRepository := repository.NewSensorRepository(db)
 
+	// Start gRPC server in goroutine
 	go grpc.StartGRPCServer(sensorRepository, ":50051")
 	log.Println("Microservice B started. gRPC server listening on :50051")
 
-	// Optionally: start Echo REST server here for CRUD operations
 	// Start Echo REST server
 	e := echo.New()
 	handler := httpHandler.NewSensorHandler(sensorRepository)
@@ -42,6 +49,10 @@ func main() {
 	e.DELETE("/sensors", handler.DeleteSensors)
 	e.PATCH("/sensors", handler.EditSensors)
 
+	// Swagger UI endpoint
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
+
+	// Run Echo server in goroutine
 	go func() {
 		log.Println("Microservice B REST server running on :8081")
 		if err := e.Start(":8081"); err != nil && err != http.ErrServerClosed {
@@ -63,6 +74,6 @@ func main() {
 		log.WithError(err).Error("REST server shutdown failed")
 	}
 
-	// Stop gRPC server if needed (implement stop in grpc package)
+	// Stop gRPC server if needed
 	log.Println("Microservice B stopped")
 }

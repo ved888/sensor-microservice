@@ -2,6 +2,7 @@ package http
 
 import (
 	"microservice-b/internal/repository"
+	"microservice-b/model"
 	"net/http"
 	"strconv"
 	"time"
@@ -17,7 +18,21 @@ func NewSensorHandler(repo *repository.SensorRepository) *SensorHandler {
 	return &SensorHandler{repo: repo}
 }
 
-// GET /sensors
+// GetSensors godoc
+// @Summary Retrieve sensor readings with filters
+// @Description This endpoint retrieves sensor readings from the database.You can filter results by `id1`, `id2`, or by a time range (`from`, `to`).You can also combine filters (e.g., ID1 + time range).Pagination is supported via `page` and `limit` query parameters.- `page`: Page number starting from 1- `limit`: Number of records per page (default: 10) Time parameters must be in RFC3339 format (UTC). Example: `2025-09-06T15:04:05Z`
+// @Tags MicroserviceB
+// @Accept json
+// @Produce json
+// @Param id1 query string false "Filter by ID1 (string identifier)" example("A")
+// @Param id2 query int false "Filter by ID2 (integer identifier)" example(1)
+// @Param from query string false "Filter from timestamp (RFC3339 format)" example("2025-09-06T10:00:00Z")
+// @Param to query string false "Filter to timestamp (RFC3339 format)" example("2025-09-06T12:00:00Z")
+// @Param page query int false "Page number (starting from 1)" default(1) example(1)
+// @Param limit query int false "Page size (number of records per page)" default(10) example(10)
+// @Success 200 {object} map[string]interface{} "Paginated sensor readings with metadata"
+// @Failure 500 {object} map[string]string "Internal server error"
+// @Router /sensors [get]
 func (h *SensorHandler) GetSensors(c echo.Context) error {
 	filters := make(map[string]interface{})
 	if id1 := c.QueryParam("id1"); id1 != "" {
@@ -68,7 +83,19 @@ func (h *SensorHandler) GetSensors(c echo.Context) error {
 	return c.JSON(http.StatusOK, response)
 }
 
-// DELETE /sensors
+// DeleteSensors godoc
+// @Summary Delete sensor readings with filters
+// @Description This endpoint deletes sensor readings from the database.You can filter records by `id1`, `id2`, or by a time range (`from`, `to`).You can also combine filters (e.g., ID1 + time range).Time parameters must be in RFC3339 format (UTC).Example: `2025-09-06T15:04:05Z`If no filters are provided, **no rows will be deleted**.
+// @Tags MicroserviceB
+// @Accept json
+// @Produce json
+// @Param id1 query string false "Filter by ID1 (string identifier)" example("A")
+// @Param id2 query int false "Filter by ID2 (integer identifier)" example(1)
+// @Param from query string false "Filter from timestamp (RFC3339 format)" example("2025-09-06T10:00:00Z")
+// @Param to query string false "Filter to timestamp (RFC3339 format)" example("2025-09-06T12:00:00Z")
+// @Success 200 {object} map[string]interface{} "Number of deleted rows, e.g. {\"deleted\": 3}"
+// @Failure 500 {object} map[string]string "Internal server error, e.g. {\"error\": \"database failure\"}"
+// @Router /sensors [delete]
 func (h *SensorHandler) DeleteSensors(c echo.Context) error {
 	filters := make(map[string]interface{})
 	if id1 := c.QueryParam("id1"); id1 != "" {
@@ -93,12 +120,23 @@ func (h *SensorHandler) DeleteSensors(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]interface{}{"deleted": rows})
 }
 
-// PATCH /sensors
+// EditSensors godoc
+// @Summary Update sensor readings values with filters
+// @Description This endpoint allows updating sensor values based on optional filters such as `id1`, `id2`, and a time range (`from`, `to`).If no filters are provided, no rows will be updated.Time parameters should be provided in RFC3339 format (UTC).Example time format: `2025-09-06T15:04:05Z`
+// @Tags MicroserviceB
+// @Accept json
+// @Produce json
+// @Param id1 query string false "Filter by ID1 (string identifier)" example("A")
+// @Param id2 query string false "Filter by ID2 (integer identifier)" example(1)
+// @Param from query string false "Start timestamp in RFC3339 format (e.g., 2025-09-06T10:00:00Z)"
+// @Param to query string false "End timestamp in RFC3339 format (e.g., 2025-09-06T12:00:00Z)"
+// @Param payload body model.EditSensorsRequest true "Sensor update request payload"
+// @Success 200 {object} map[string]interface{} "Number of updated rows, e.g. {\"updated\": 5}"
+// @Failure 400 {object} map[string]string "Invalid request body, e.g. {\"error\": \"invalid body\"}"
+// @Failure 500 {object} map[string]string "Internal server error, e.g. {\"error\": \"database failure\"}"
+// @Router /sensors [patch]
 func (h *SensorHandler) EditSensors(c echo.Context) error {
-	type request struct {
-		Value float64 `json:"value"`
-	}
-	req := new(request)
+	req := new(model.EditSensorsRequest)
 	if err := c.Bind(req); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid body"})
 	}

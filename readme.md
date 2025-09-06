@@ -47,7 +47,6 @@ The `.proto` definitions are stored in the [`shared-proto/`](./shared-proto) fol
 
 ## 📂 Proto file location
 
-
 ---
 
 ## ⚙️ Installation (first time only)
@@ -100,3 +99,95 @@ microservice-b/pb/
  ├── sensor.pb.go
  └── sensor_grpc.pb.go
 ```
+
+## 📘 Swagger API Documentation
+
+Both microservices expose **REST APIs** documented using **Swagger (swaggo)**.
+
+### 📦 Installation
+
+Install `swag` CLI tool:
+```
+go install github.com/swaggo/swag/cmd/swag@latest
+```
+
+### 🔨 Generate Swagger Docs
+
+From the root of the project, run:
+```
+# Generate Swagger docs for Microservice A
+cd microservice-a
+swag init -g cmd/main.go -o docs
+
+# Generate Swagger docs for Microservice B
+cd ../microservice-b
+swag init -g cmd/main.go -o docs
+```
+This will create a `docs/` folder in each service containing `swagger.json` and `swagger.yaml`.
+
+### 🚀 Run Services with Swagger
+
+Start each service:
+```
+# Start Microservice A (REST on :8080)
+cd microservice-a
+go run cmd/main.go
+
+# Start Microservice B (REST on :8081)
+cd microservice-b
+go run cmd/main.go
+```
+
+### 🌐 Access Swagger UI
+* **Microservice A Swagger UI** → http://localhost:8080/swagger/index.html
+* **Microservice B Swagger UI** → http://localhost:8081/swagger/index.html
+
+# ▶️ Running the Microservices
+
+This project uses a **Makefile** to simplify running and stopping the services.  
+Microservice **B** must start first (it provides gRPC + REST APIs), followed by Microservice **A** (data generator + gRPC client).
+
+---
+
+## 🏃 Run All Services
+
+```bash
+make run
+```
+This will:
+
+* Start **Microservice B** (gRPC on `:50051`, REST on `:8081`)
+* Then start Microservice A (REST on `:8080`)
+
+Logs will be written to:
+* `microservice-a/microservice-a.log`
+* `microservice-b/microservice-b.log`
+
+Process IDs are stored in `.pid` files for easier shutdown.
+
+### 🖥️ Start Individually
+
+* Start **Microservice B** only:
+```
+make run-b
+```
+
+* Start **Microservice A** only:
+```
+make run-a
+```
+### 🛑 Stop All Services
+
+Gracefully stop both services:
+```
+make clean
+```
+This will:
+
+* Kill processes saved in `.pid` files
+* Free up ports `8080`, `8081`, and `50051`
+
+### 🌐 Access Services
+* Microservice A REST API → http://localhost:8080
+* Microservice B REST API → http://localhost:8081
+* Microservice B gRPC → `localhost:50051`

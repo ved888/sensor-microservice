@@ -1,2 +1,4 @@
 # Environment files
 .env
+microservice-a.log
+microservice-b.log

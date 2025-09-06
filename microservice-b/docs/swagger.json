@@ -1,0 +1,240 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the API documentation for Microservice B (Data Receiver / API Service)",
+        "title": "sensor-microservice-b",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8081",
+    "basePath": "/",
+    "paths": {
+        "/sensors": {
+            "get": {
+                "description": "This endpoint retrieves sensor readings from the database.You can filter results by `id1`, `id2`, or by a time range (`from`, `to`).You can also combine filters (e.g., ID1 + time range).Pagination is supported via `page` and `limit` query parameters.- `page`: Page number starting from 1- `limit`: Number of records per page (default: 10) Time parameters must be in RFC3339 format (UTC). Example: `2025-09-06T15:04:05Z`",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MicroserviceB"
+                ],
+                "summary": "Retrieve sensor readings with filters",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "\"A\"",
+                        "description": "Filter by ID1 (string identifier)",
+                        "name": "id1",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "Filter by ID2 (integer identifier)",
+                        "name": "id2",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "\"2025-09-06T10:00:00Z\"",
+                        "description": "Filter from timestamp (RFC3339 format)",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "\"2025-09-06T12:00:00Z\"",
+                        "description": "Filter to timestamp (RFC3339 format)",
+                        "name": "to",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "example": 1,
+                        "description": "Page number (starting from 1)",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "default": 10,
+                        "example": 10,
+                        "description": "Page size (number of records per page)",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Paginated sensor readings with metadata",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "This endpoint deletes sensor readings from the database.You can filter records by `id1`, `id2`, or by a time range (`from`, `to`).You can also combine filters (e.g., ID1 + time range).Time parameters must be in RFC3339 format (UTC).Example: `2025-09-06T15:04:05Z`If no filters are provided, **no rows will be deleted**.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MicroserviceB"
+                ],
+                "summary": "Delete sensor readings with filters",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "\"A\"",
+                        "description": "Filter by ID1 (string identifier)",
+                        "name": "id1",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "Filter by ID2 (integer identifier)",
+                        "name": "id2",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "\"2025-09-06T10:00:00Z\"",
+                        "description": "Filter from timestamp (RFC3339 format)",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "\"2025-09-06T12:00:00Z\"",
+                        "description": "Filter to timestamp (RFC3339 format)",
+                        "name": "to",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number of deleted rows, e.g. {\\\"deleted\\\": 3}",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error, e.g. {\\\"error\\\": \\\"database failure\\\"}",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "description": "This endpoint allows updating sensor values based on optional filters such as `id1`, `id2`, and a time range (`from`, `to`).If no filters are provided, no rows will be updated.Time parameters should be provided in RFC3339 format (UTC).Example time format: `2025-09-06T15:04:05Z`",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MicroserviceB"
+                ],
+                "summary": "Update sensor readings values with filters",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "\"A\"",
+                        "description": "Filter by ID1 (string identifier)",
+                        "name": "id1",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "1",
+                        "description": "Filter by ID2 (integer identifier)",
+                        "name": "id2",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Start timestamp in RFC3339 format (e.g., 2025-09-06T10:00:00Z)",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "End timestamp in RFC3339 format (e.g., 2025-09-06T12:00:00Z)",
+                        "name": "to",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Sensor update request payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.EditSensorsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Number of updated rows, e.g. {\\\"updated\\\": 5}",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request body, e.g. {\\\"error\\\": \\\"invalid body\\\"}",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error, e.g. {\\\"error\\\": \\\"database failure\\\"}",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.EditSensorsRequest": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
