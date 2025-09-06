@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package sensor;
+
+import "google/protobuf/timestamp.proto";
+
+// adjust module path to project
+option go_package = "./shared-proto;pb";
+
+message SensorData{
+  double value=1;
+  string sensor_type=2;
+  string id1=3;          // e.g., "A", "SENSORX"
+  string id2=4;
+  google.protobuf.Timestamp timestamp = 5;
+}
+
+service SensorService{
+  // microservice-a streams events to microservice-b
+rpc SendSensorData(stream SensorData) returns (Ack);
+  // optional unary per event
+ // rpc SendEvent(SensorData) returns (Ack);
+}
+
+message Ack {
+  bool ok = 1;
+  string message = 2;
+}
