@@ -6,22 +6,29 @@ import (
 	"microservice-b/internal/api/grpc"
 	httpHandler "microservice-b/internal/api/http"
 	"microservice-b/internal/repository"
+	"microservice-b/internal/usecase"
+	myMiddleware "microservice-b/middleware"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
+	_ "microservice-b/docs"
+
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/sirupsen/logrus"
 	echoSwagger "github.com/swaggo/echo-swagger"
-	_ "microservice-b/docs"
 )
 
 // @title sensor-microservice-b
 // @version 1.0
 // @description This is the API documentation for Microservice B (Data Receiver / API Service)
 // @host localhost:8081
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
 // @BasePath /
 func main() {
 	// Structured logger
@@ -35,7 +42,15 @@ func main() {
 	}
 	defer db.Close()
 
+	// Repositories
 	sensorRepository := repository.NewSensorRepository(db)
+	userRepo := repository.NewUserRepository(db)
+
+	// Usecases
+	userUseCase := &usecase.UserRepository{
+		Repo:      userRepo,
+		JWTSecret: "my-secret-key",
+	}
 
 	// Start gRPC server in goroutine
 	go grpc.StartGRPCServer(sensorRepository, ":50051")
@@ -43,11 +58,27 @@ func main() {
 
 	// Start Echo REST server
 	e := echo.New()
-	handler := httpHandler.NewSensorHandler(sensorRepository)
 
-	e.GET("/sensors", handler.GetSensors)
-	e.DELETE("/sensors", handler.DeleteSensors)
-	e.PATCH("/sensors", handler.EditSensors)
+	// Global Middleware
+	e.Use(middleware.Recover()) // recover from panics
+	e.Use(middleware.Logger())  // log HTTP requests
+	e.Use(middleware.CORS())    // allow cross-origin requests
+
+	// Handlers
+	sensorHandler := httpHandler.NewSensorHandler(sensorRepository)
+	userHandler := httpHandler.NewUserHandler(userUseCase)
+
+	// Public routes
+	e.POST("/signup", userHandler.Signup)
+	e.POST("/login", userHandler.Login)
+
+	// Protected routes
+	apiGroup := e.Group("/api")
+	apiGroup.Use(myMiddleware.JWTMiddleware(userUseCase.JWTSecret))
+
+	apiGroup.GET("/sensors", sensorHandler.GetSensors)
+	apiGroup.DELETE("/sensors", sensorHandler.DeleteSensors)
+	apiGroup.PATCH("/sensors", sensorHandler.EditSensors)
 
 	// Swagger UI endpoint
 	e.GET("/swagger/*", echoSwagger.WrapHandler)

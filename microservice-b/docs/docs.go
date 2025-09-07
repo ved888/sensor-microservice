@@ -15,8 +15,13 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/sensors": {
+        "/api/sensors": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This endpoint retrieves sensor readings from the database.You can filter results by ` + "`" + `id1` + "`" + `, ` + "`" + `id2` + "`" + `, or by a time range (` + "`" + `from` + "`" + `, ` + "`" + `to` + "`" + `).You can also combine filters (e.g., ID1 + time range).Pagination is supported via ` + "`" + `page` + "`" + ` and ` + "`" + `limit` + "`" + ` query parameters.- ` + "`" + `page` + "`" + `: Page number starting from 1- ` + "`" + `limit` + "`" + `: Number of records per page (default: 10) Time parameters must be in RFC3339 format (UTC). Example: ` + "`" + `2025-09-06T15:04:05Z` + "`" + `",
                 "consumes": [
                     "application/json"
@@ -94,6 +99,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This endpoint deletes sensor readings from the database.You can filter records by ` + "`" + `id1` + "`" + `, ` + "`" + `id2` + "`" + `, or by a time range (` + "`" + `from` + "`" + `, ` + "`" + `to` + "`" + `).You can also combine filters (e.g., ID1 + time range).Time parameters must be in RFC3339 format (UTC).Example: ` + "`" + `2025-09-06T15:04:05Z` + "`" + `If no filters are provided, **no rows will be deleted**.",
                 "consumes": [
                     "application/json"
@@ -155,6 +165,11 @@ const docTemplate = `{
                 }
             },
             "patch": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "This endpoint allows updating sensor values based on optional filters such as ` + "`" + `id1` + "`" + `, ` + "`" + `id2` + "`" + `, and a time range (` + "`" + `from` + "`" + `, ` + "`" + `to` + "`" + `).If no filters are provided, no rows will be updated.Time parameters should be provided in RFC3339 format (UTC).Example time format: ` + "`" + `2025-09-06T15:04:05Z` + "`" + `",
                 "consumes": [
                     "application/json"
@@ -231,6 +246,110 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/login": {
+            "post": {
+                "description": "Authenticates a user by validating the provided email and password. Returns a JWT token upon successful login.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Authenticate a user and return a JWT token",
+                "parameters": [
+                    {
+                        "description": "User login credentials payload",
+                        "name": "credentials",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "JWT token response",
+                        "schema": {
+                            "$ref": "#/definitions/model.LoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "invalid request payload\"}",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "invalid credentials\"}",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "something went wrong\"}",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "description": "Register a new user with email, password, optional name fields, and role. The email must be unique. Passwords must be between 6 and 60 characters. Role defaults to \"analyst\" if not provided.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user account",
+                "parameters": [
+                    {
+                        "description": "User signup payload",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SignupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/model.SignupResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request or validation failed",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "409": {
+                        "description": "User with email already exists",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/model.ErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -241,6 +360,74 @@ const docTemplate = `{
                     "type": "number"
                 }
             }
+        },
+        "model.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.Login": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SignupRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.SignupResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }`
@@ -249,7 +436,7 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
 	Host:             "localhost:8081",
-	BasePath:         "/",
+	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "sensor-microservice-b",
 	Description:      "This is the API documentation for Microservice B (Data Receiver / API Service)",
