@@ -1,9 +1,47 @@
-basePath: /
 definitions:
   model.EditSensorsRequest:
     properties:
       value:
         type: number
+    type: object
+  model.ErrorResponse:
+    properties:
+      code:
+        type: integer
+      details:
+        type: string
+      error:
+        type: string
+    type: object
+  model.Login:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  model.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  model.SignupRequest:
+    properties:
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+    type: object
+  model.SignupResponse:
+    properties:
+      message:
+        type: string
     type: object
 host: localhost:8081
 info:
@@ -13,7 +51,7 @@ info:
   title: sensor-microservice-b
   version: "1.0"
 paths:
-  /sensors:
+  /api/sensors:
     delete:
       consumes:
       - application/json
@@ -57,6 +95,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Delete sensor readings with filters
       tags:
       - MicroserviceB
@@ -116,6 +156,8 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Retrieve sensor readings with filters
       tags:
       - MicroserviceB
@@ -171,7 +213,85 @@ paths:
             additionalProperties:
               type: string
             type: object
+      security:
+      - BearerAuth: []
       summary: Update sensor readings values with filters
       tags:
       - MicroserviceB
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates a user by validating the provided email and password.
+        Returns a JWT token upon successful login.
+      parameters:
+      - description: User login credentials payload
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/model.Login'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: JWT token response
+          schema:
+            $ref: '#/definitions/model.LoginResponse'
+        "400":
+          description: invalid request payload"}
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "401":
+          description: invalid credentials"}
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: something went wrong"}
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+      summary: Authenticate a user and return a JWT token
+      tags:
+      - Users
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with email, password, optional name fields,
+        and role. The email must be unique. Passwords must be between 6 and 60 characters.
+        Role defaults to "analyst" if not provided.
+      parameters:
+      - description: User signup payload
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.SignupRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: User created successfully
+          schema:
+            $ref: '#/definitions/model.SignupResponse'
+        "400":
+          description: Invalid request or validation failed
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "409":
+          description: User with email already exists
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+      summary: Create a new user account
+      tags:
+      - Users
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

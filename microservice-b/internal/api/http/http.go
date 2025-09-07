@@ -32,7 +32,8 @@ func NewSensorHandler(repo *repository.SensorRepository) *SensorHandler {
 // @Param limit query int false "Page size (number of records per page)" default(10) example(10)
 // @Success 200 {object} map[string]interface{} "Paginated sensor readings with metadata"
 // @Failure 500 {object} map[string]string "Internal server error"
-// @Router /sensors [get]
+// @Security BearerAuth
+// @Router /api/sensors [get]
 func (h *SensorHandler) GetSensors(c echo.Context) error {
 	filters := make(map[string]interface{})
 	if id1 := c.QueryParam("id1"); id1 != "" {
@@ -95,7 +96,8 @@ func (h *SensorHandler) GetSensors(c echo.Context) error {
 // @Param to query string false "Filter to timestamp (RFC3339 format)" example("2025-09-06T12:00:00Z")
 // @Success 200 {object} map[string]interface{} "Number of deleted rows, e.g. {\"deleted\": 3}"
 // @Failure 500 {object} map[string]string "Internal server error, e.g. {\"error\": \"database failure\"}"
-// @Router /sensors [delete]
+// @Security BearerAuth
+// @Router /api/sensors [delete]
 func (h *SensorHandler) DeleteSensors(c echo.Context) error {
 	filters := make(map[string]interface{})
 	if id1 := c.QueryParam("id1"); id1 != "" {
@@ -134,7 +136,8 @@ func (h *SensorHandler) DeleteSensors(c echo.Context) error {
 // @Success 200 {object} map[string]interface{} "Number of updated rows, e.g. {\"updated\": 5}"
 // @Failure 400 {object} map[string]string "Invalid request body, e.g. {\"error\": \"invalid body\"}"
 // @Failure 500 {object} map[string]string "Internal server error, e.g. {\"error\": \"database failure\"}"
-// @Router /sensors [patch]
+// @Security BearerAuth
+// @Router /api/sensors [patch]
 func (h *SensorHandler) EditSensors(c echo.Context) error {
 	req := new(model.EditSensorsRequest)
 	if err := c.Bind(req); err != nil {

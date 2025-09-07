@@ -67,7 +67,6 @@ func findMigrationsFolderRoot() string {
 }
 
 // migrateUp applies pending migrations
-// migrateUp applies pending migrations
 func migrateUp(db *sqlx.DB, dsn string) error {
 	sqlDB := db.DB
 	driver, err := mysql.WithInstance(sqlDB, &mysql.Config{})

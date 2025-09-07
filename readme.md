@@ -191,3 +191,70 @@ This will:
 * Microservice A REST API → http://localhost:8080
 * Microservice B REST API → http://localhost:8081
 * Microservice B gRPC → `localhost:50051`
+
+## 🔐 Authentication (JWT-based)
+This project uses JSON Web Tokens (JWT) to authenticate users and protect API endpoints. Authentication is implemented in Microservice B, which handles user signup, login, and validation for accessing protected routes.
+
+### 📋 How It Works
+#### 1. Signup (POST /signup)
+Allows users to register by providing:
+* `first_name` (optional)
+* `last_name `(optional)
+* `email` (required, must be unique)
+* `password` (required, 6–60 characters)
+* `role` (optional, defaults to "analyst", valid values: "admin", "analyst")
+
+Example request:
+```
+curl -X POST http://localhost:8081/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "first_name": "Ved",
+    "last_name": "Verma",
+    "email": "ved@example.com",
+    "password": "securepassword123",
+    "role": "admin"
+  }'
+```
+
+#### 1. Login (POST /login)
+Allows users to authenticate and obtain a JWT token by providing:
+* `email` (required)
+* `password` (required)
+
+Example request:
+```
+curl -X POST http://localhost:8081/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "ved@example.com",
+    "password": "securepassword123"
+  }'
+```
+Example response:
+```
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+#### 3. Accessing Protected Routes
+Routes under `/api` are protected and require the JWT token.
+Add the token in the request header as:
+```
+Authorization: Bearer <JWT_TOKEN>
+```
+Example:
+
+```
+curl -X GET "http://localhost:8081/api/sensors?id1=A&id2=1&page=1&limit=10" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZDEyM0BnbWFpbC5jb20iLCJleHAiOjE3NTczMzMzMjUsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOjF9.ND6vcnN0bbJbS6pVh2Cdx_DY6LONSfB_hjyWFyXhbTA"
+```
+
+### 📦 JWT Token Details
+* **Algorithm:** `HS256` (HMAC with SHA-256)
+* **Claims:**
+  * user_id: User’s ID
+  * email: User’s email address
+  * role: User’s role (admin or analyst)
+  * exp: Token expiration time (in UNIX timestamp)
