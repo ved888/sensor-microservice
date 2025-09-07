@@ -1,4 +1,13 @@
 # Environment files
-.env
+# Ignore all env files by default
+*.env
+
+# Except sensor env files 
+!configs/temperature.env
+!configs/humidity.env
+!configs/pressure.env
+!configs/light.env
+!configs/motion.env
+
 microservice-a.log
 microservice-b.log

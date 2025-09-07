@@ -176,6 +176,29 @@ make run-b
 ```
 make run-a
 ```
+* start multiple Service A
+``` 
+#Temperature
+ cd microservice-a
+ ENV_FILE=../configs/temperature.env go run cmd/main.go
+
+# Humidity
+cd microservice-a
+ENV_FILE=../configs/humidity.env go run cmd/main.go
+
+# Pressure
+cd microservice-a
+ENV_FILE=../configs/pressure.env go run cmd/main.go
+
+# Light
+cd microservice-a
+ENV_FILE=../configs/light.env go run cmd/main.go
+
+# Motion
+cd microservice-a
+ENV_FILE=../configs/motion.env go run cmd/main.go
+```
+
 ### 🛑 Stop All Services
 
 Gracefully stop both services:

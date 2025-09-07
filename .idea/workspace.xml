@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.down.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.up.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/internal/repository/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/internal/usecase/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/middleware/jwt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/utils/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/humidity.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/swagger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-a/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-a/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-b/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/cmd/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-b/database/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/docs/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/docs/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/docs/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/grpc/grpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/grpc/grpc.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

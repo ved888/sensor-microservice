@@ -15,7 +15,7 @@ import (
 )
 
 func DbConnection() (*sqlx.DB, error) {
-	err := godotenv.Load()
+	err := godotenv.Load("db.env")
 	if err != nil {
 		log.Println("Warning: .env file not loaded")
 	}
