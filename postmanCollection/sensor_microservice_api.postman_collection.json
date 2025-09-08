@@ -1,0 +1,613 @@
+{
+	"info": {
+		"_postman_id": "80993abf-4298-448a-9aed-841c06e78f27",
+		"name": "sensor_microservice_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23384652"
+	},
+	"item": [
+		{
+			"name": "microservice-a-frequency-control",
+			"item": [
+				{
+					"name": "updateHumidityFrequency(millisecond)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_humidity_url_a}}/frequency?freq=5000",
+							"host": [
+								"{{base_humidity_url_a}}"
+							],
+							"path": [
+								"frequency"
+							],
+							"query": [
+								{
+									"key": "freq",
+									"value": "5000",
+									"description": "Frequency in milliseconds"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateLightFrequency(duration string)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_light_url_a}}/frequency?freq=5s",
+							"host": [
+								"{{base_light_url_a}}"
+							],
+							"path": [
+								"frequency"
+							],
+							"query": [
+								{
+									"key": "freq",
+									"value": "5s",
+									"description": "Frequency as duration string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateMotionFrequency(500ms)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_motion_url_a}}/frequency?freq=500ms",
+							"host": [
+								"{{base_motion_url_a}}"
+							],
+							"path": [
+								"frequency"
+							],
+							"query": [
+								{
+									"key": "freq",
+									"value": "500ms"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePressureFrequency",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_pressure_url_a}}/frequency?freq=5000ms",
+							"host": [
+								"{{base_pressure_url_a}}"
+							],
+							"path": [
+								"frequency"
+							],
+							"query": [
+								{
+									"key": "freq",
+									"value": "5000ms"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTemperatureFrequency",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_temperature_url_a}}/frequency?freq=5000",
+							"host": [
+								"{{base_temperature_url_a}}"
+							],
+							"path": [
+								"frequency"
+							],
+							"query": [
+								{
+									"key": "freq",
+									"value": "5000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "microservice-b-sensor-data-management",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "user-signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\":\"ved prakash\",\n    \"last_name\":\"verma\",\n    \"email\":\"ved123@gmail.com\",\n    \"password\":\"Ved1234#\",\n    \"role\":\"admin\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url_b}}/signup",
+									"host": [
+										"{{base_url_b}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user-login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code === 200) {",
+											"    const responseJson = pm.response.json();",
+											"    pm.environment.set('jwt_token', responseJson.token);",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"ved123@gmail.com\",\n    \"password\":\"Ved1234#\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url_b}}/login",
+									"host": [
+										"{{base_url_b}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getAllSensorData",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSensorDataByID1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id1=A",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id1",
+									"value": "A"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSensorDataByID2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id2=1",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id2",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSensorDataByTimeRange",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:42Z",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2025-09-06T08:28:42Z",
+									"description": "Start timestamp (RFC3339)"
+								},
+								{
+									"key": "to",
+									"value": "2025-09-06T08:29:42Z",
+									"description": "End timestamp (RFC3339)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSensorDataWithCombinedFilters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id1=A&id2=1&from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:42Z",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id1",
+									"value": "A"
+								},
+								{
+									"key": "id2",
+									"value": "1"
+								},
+								{
+									"key": "from",
+									"value": "2025-09-06T08:28:42Z",
+									"description": "Start timestamp (RFC3339)"
+								},
+								{
+									"key": "to",
+									"value": "2025-09-06T08:29:42Z",
+									"description": "End timestamp (RFC3339)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSensorDataWithPagination",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?page=1&limit=10",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number (starting from 1)"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of records per page"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSensorByID1",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id1=E",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id1",
+									"value": "E"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSesorDataByTimeRange",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?from=2025-09-06T08:28:42Z&to=2025-09-06T08:28:47Z",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2025-09-06T08:28:42Z"
+								},
+								{
+									"key": "to",
+									"value": "2025-09-06T08:28:47Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSensorDataByID1",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": 25.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id=A",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "A"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSensorDataByCombinatedFilters",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": 25.9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_b}}/api/sensors?id1=A&Id2=1&from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:55Z",
+							"host": [
+								"{{base_url_b}}"
+							],
+							"path": [
+								"api",
+								"sensors"
+							],
+							"query": [
+								{
+									"key": "id1",
+									"value": "A"
+								},
+								{
+									"key": "Id2",
+									"value": "1"
+								},
+								{
+									"key": "from",
+									"value": "2025-09-06T08:28:42Z"
+								},
+								{
+									"key": "to",
+									"value": "2025-09-06T08:29:55Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

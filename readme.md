@@ -281,3 +281,8 @@ curl -X GET "http://localhost:8081/api/sensors?id1=A&id2=1&page=1&limit=10" \
   * email: User’s email address
   * role: User’s role (admin or analyst)
   * exp: Token expiration time (in UNIX timestamp)
+
+## Postman Collection
+You can import the Postman collection and environment to test the APIs:
+- **Collection:** [sensor_microservice_api.postman_collection.json](./postmanCollection/sensor_microservice_api.postman_collection.json)
+- **Environment:** [sensor_microservice_api_Environment.postman_environment.json](./postmanCollection/sensor_microservice_api_Environment.postman_environment.json)
