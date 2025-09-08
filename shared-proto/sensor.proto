@@ -18,8 +18,6 @@ message SensorData{
 service SensorService{
   // microservice-a streams events to microservice-b
 rpc SendSensorData(stream SensorData) returns (Ack);
-  // optional unary per event
- // rpc SendEvent(SensorData) returns (Ack);
 }
 
 message Ack {

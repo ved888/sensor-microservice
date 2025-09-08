@@ -25,7 +25,7 @@ import (
 // @title sensor-microservice-b
 // @version 1.0
 // @description This is the API documentation for Microservice B (Data Receiver / API Service)
-// @host localhost:8081
+// @host localhost:8000
 // @securityDefinitions.apikey BearerAuth
 // @in header
 // @name Authorization
@@ -52,9 +52,8 @@ func main() {
 		JWTSecret: "my-secret-key",
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	// Start gRPC server in goroutine
-	go grpc.StartGRPCServer(ctx, sensorRepository, ":50051")
+	go grpc.StartGRPCServer(sensorRepository, ":50051")
 	log.Println("Microservice B started. gRPC server listening on :50051")
 
 	// Start Echo REST server
@@ -84,10 +83,11 @@ func main() {
 	// Swagger UI endpoint
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
+	port := os.Getenv("PORT")
 	// Run Echo server in goroutine
 	go func() {
-		log.Println("Microservice B REST server running on :8000")
-		if err := e.Start(":8000"); err != nil && err != http.ErrServerClosed {
+		log.Printf("Microservice B REST server running on :%s", port)
+		if err := e.Start(":" + port); err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
 	}()
@@ -98,13 +98,11 @@ func main() {
 	<-quit
 	log.Println("Shutting down servers...")
 
-	// Cancel context to stop gRPC server
-	cancel()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 
-	shutdownCtx, shutDownCancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer shutDownCancel()
 	// Shutdown Echo server
-	if err := e.Shutdown(shutdownCtx); err != nil {
+	if err := e.Shutdown(ctx); err != nil {
 		log.WithError(err).Error("REST server shutdown failed")
 	}
 

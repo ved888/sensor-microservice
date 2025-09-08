@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/configs/humidity.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-a/internal/api/http/http_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/api/grpc/grpc_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/user_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/repository/sensor_repository_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/repository/user_repository_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/internal/usecase/user_usecase_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/docs/swagger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-a/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-b/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/database/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/grpc/grpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/grpc/grpc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/http/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/config/config.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/usecase/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/usecase/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-proto/sensor.proto" beforeDir="false" afterPath="$PROJECT_DIR$/shared-proto/sensor.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +52,52 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.TestGenerator_ConcurrentOperations in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_MultipleDataGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_MultipleDataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration_WithRealServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_Stop in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency_DuringGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency_DuringGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency in microservice-a/internal/api/http.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_DurationString in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_InvalidFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_Milliseconds in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_MissingFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_NegativeFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_Seconds in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_ZeroFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestIsValidEmail in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestIsValidPassword in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestNewGenerator in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorHandler_EditSensors_InvalidBody in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorHandler_GetSensors in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_CountSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_DeleteSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_EditSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_GetSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_Save in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Login in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Login_InvalidRequest in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup/success_signup in microservice-b/internal/api/http.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserHandler_Signup_InvalidEmail in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup_InvalidPassword in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup_MissingFields in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepo_CreateUser in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepo_GetByEmail in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepo_UpdateLastLogin in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepository_CreateUser in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_GetByEmail_NotFound in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_GetByEmail_Success in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_Success in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Signup_EmailAlreadyExists in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Signup_Success in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
     &quot;Makefile Target.clean-proto.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
@@ -64,7 +111,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ved/myProject/sensor-microservices/microservice-b&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ved/myProject/sensor-microservices/microservice-b/internal/usecase&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
@@ -77,8 +124,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <recent name="$PROJECT_DIR$/microservice-b/internal/repository" />
+      <recent name="$PROJECT_DIR$/microservice-b/internal/api/http" />
+      <recent name="$PROJECT_DIR$/microservice-a/internal/api/http" />
       <recent name="$PROJECT_DIR$/microservice-b" />
-      <recent name="$PROJECT_DIR$/microservice-a/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/microservice-b/middleware" />
@@ -88,16 +138,74 @@
       <recent name="$PROJECT_DIR$/microservice-b/internal" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="clean-proto" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/MakeFile" target="clean-proto" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
+  <component name="RunManager" selected="Go Test.TestIsValidPassword in microservice-b/internal/usecase">
+    <configuration name="TestIsValidEmail in microservice-b/internal/usecase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sensor-microservices" />
+      <working_directory value="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <root_directory value="$PROJECT_DIR$/microservice-b" />
+      <kind value="PACKAGE" />
+      <package value="microservice-b/internal/usecase" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestIsValidEmail\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestIsValidPassword in microservice-b/internal/usecase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sensor-microservices" />
+      <working_directory value="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <root_directory value="$PROJECT_DIR$/microservice-b" />
+      <kind value="PACKAGE" />
+      <package value="microservice-b/internal/usecase" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestIsValidPassword\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sensor-microservices" />
+      <working_directory value="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <root_directory value="$PROJECT_DIR$/microservice-b" />
+      <kind value="PACKAGE" />
+      <package value="microservice-b/internal/usecase" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestUserRepository_Login_EmailNotFound\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUserRepository_Login_Success in microservice-b/internal/usecase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sensor-microservices" />
+      <working_directory value="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <root_directory value="$PROJECT_DIR$/microservice-b" />
+      <kind value="PACKAGE" />
+      <package value="microservice-b/internal/usecase" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestUserRepository_Login_Success\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="sensor-microservices" />
+      <working_directory value="$PROJECT_DIR$/microservice-b/internal/usecase" />
+      <root_directory value="$PROJECT_DIR$/microservice-b" />
+      <kind value="PACKAGE" />
+      <package value="microservice-b/internal/usecase" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestUserRepository_Login_WrongPassword\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.clean-proto" />
+        <item itemvalue="Go Test.TestIsValidPassword in microservice-b/internal/usecase" />
+        <item itemvalue="Go Test.TestIsValidEmail in microservice-b/internal/usecase" />
+        <item itemvalue="Go Test.TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase" />
+        <item itemvalue="Go Test.TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase" />
+        <item itemvalue="Go Test.TestUserRepository_Login_Success in microservice-b/internal/usecase" />
       </list>
     </recent_temporary>
   </component>
@@ -149,5 +257,51 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_Start_DataGeneration_WithRealServer_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_Start_DataGeneration_WithRealServer in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315988541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Signup_InvalidPassword_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Signup_InvalidPassword in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318446221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorRepository_DeleteSensors_in_microservice_b_internal_repository.out" NAME="TestSensorRepository_DeleteSensors in microservice-b/internal/repository Coverage Results" MODIFIED="1757319589119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_NegativeFreq_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_NegativeFreq in microservice-a/internal/api/http Coverage Results" MODIFIED="1757316259324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_Signup_EmailAlreadyExists_in_microservice_b_internal_usecase.out" NAME="TestUserRepository_Signup_EmailAlreadyExists in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320652582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_UpdateFrequency_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_UpdateFrequency in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315552475" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency in microservice-a/internal/api/http Coverage Results" MODIFIED="1757317915495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_MultipleDataGeneration_WithServer_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_MultipleDataGeneration_WithServer in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757316151812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_GetByEmail_Success_in_microservice_b_internal_repository.out" NAME="TestUserRepository_GetByEmail_Success in microservice-b/internal/repository Coverage Results" MODIFIED="1757320341678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_Stop_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_Stop in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315559241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Login_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Login in microservice-b/internal/api/http Coverage Results" MODIFIED="1757319199675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Signup_InvalidEmail_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Signup_InvalidEmail in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318436822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_GetByEmail_NotFound_in_microservice_b_internal_repository.out" NAME="TestUserRepository_GetByEmail_NotFound in microservice-b/internal/repository Coverage Results" MODIFIED="1757320351163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestIsValidPassword_in_microservice_b_internal_usecase.out" NAME="TestIsValidPassword in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320696908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_UpdateFrequency_DuringGeneration_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_UpdateFrequency_DuringGeneration in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315997559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorRepository_CountSensors_in_microservice_b_internal_repository.out" NAME="TestSensorRepository_CountSensors in microservice-b/internal/repository Coverage Results" MODIFIED="1757319785933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorRepository_Save_in_microservice_b_internal_repository.out" NAME="TestSensorRepository_Save in microservice-b/internal/repository Coverage Results" MODIFIED="1757319525278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_Milliseconds_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_Milliseconds in microservice-a/internal/api/http Coverage Results" MODIFIED="1757318117811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_UpdateFrequency_DuringGeneration_WithServer_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_UpdateFrequency_DuringGeneration_WithServer in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757316080058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Signup_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Signup in microservice-b/internal/api/http Coverage Results" MODIFIED="1757319220488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_MultipleDataGeneration_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_MultipleDataGeneration in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315590579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_Login_Success_in_microservice_b_internal_usecase.out" NAME="TestUserRepository_Login_Success in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320660595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestIsValidEmail_in_microservice_b_internal_usecase.out" NAME="TestIsValidEmail in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320689444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Signup_MissingFields_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Signup_MissingFields in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318460598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepo_CreateUser_in_microservice_b_internal_repository.out" NAME="TestUserRepo_CreateUser in microservice-b/internal/repository Coverage Results" MODIFIED="1757320371830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepo_UpdateLastLogin_in_microservice_b_internal_repository.out" NAME="TestUserRepo_UpdateLastLogin in microservice-b/internal/repository Coverage Results" MODIFIED="1757320390826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_Seconds_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_Seconds in microservice-a/internal/api/http Coverage Results" MODIFIED="1757318142277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_Login_EmailNotFound_in_microservice_b_internal_usecase.out" NAME="TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320672774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestNewGenerator_in_microservice_a_internal_api_grpcclient.out" NAME="TestNewGenerator in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315544085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorRepository_EditSensors_in_microservice_b_internal_repository.out" NAME="TestSensorRepository_EditSensors in microservice-b/internal/repository Coverage Results" MODIFIED="1757319598012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserHandler_Login_InvalidRequest_in_microservice_b_internal_api_http.out" NAME="TestUserHandler_Login_InvalidRequest in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318470410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorRepository_GetSensors_in_microservice_b_internal_repository.out" NAME="TestSensorRepository_GetSensors in microservice-b/internal/repository Coverage Results" MODIFIED="1757320205221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepo_GetByEmail_in_microservice_b_internal_repository.out" NAME="TestUserRepo_GetByEmail in microservice-b/internal/repository Coverage Results" MODIFIED="1757320382198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_Login_WrongPassword_in_microservice_b_internal_usecase.out" NAME="TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320680314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_ConcurrentOperations_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_ConcurrentOperations in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757316087530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_ZeroFreq_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_ZeroFreq in microservice-a/internal/api/http Coverage Results" MODIFIED="1757316251785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorHandler_EditSensors_InvalidBody_in_microservice_b_internal_api_http.out" NAME="TestSensorHandler_EditSensors_InvalidBody in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318306264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_InvalidFreq_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_InvalidFreq in microservice-a/internal/api/http Coverage Results" MODIFIED="1757318155517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_MissingFreq_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_MissingFreq in microservice-a/internal/api/http Coverage Results" MODIFIED="1757318149654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_CreateUser_in_microservice_b_internal_repository.out" NAME="TestUserRepository_CreateUser in microservice-b/internal/repository Coverage Results" MODIFIED="1757320328146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestUserRepository_Signup_Success_in_microservice_b_internal_usecase.out" NAME="TestUserRepository_Signup_Success in microservice-b/internal/usecase Coverage Results" MODIFIED="1757320643694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestHandler_UpdateFrequency_DurationString_in_microservice_a_internal_api_http.out" NAME="TestHandler_UpdateFrequency_DurationString in microservice-a/internal/api/http Coverage Results" MODIFIED="1757318124842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestSensorHandler_GetSensors_in_microservice_b_internal_api_http.out" NAME="TestSensorHandler_GetSensors in microservice-b/internal/api/http Coverage Results" MODIFIED="1757318295397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/sensor_microservices$TestGenerator_Start_DataGeneration_in_microservice_a_internal_api_grpcclient.out" NAME="TestGenerator_Start_DataGeneration in microservice-a/internal/api/grpcclient Coverage Results" MODIFIED="1757315566630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -12,6 +12,11 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+type IUserRepository interface {
+	Signup(u *model.SignupRequest) error
+	Login(email, password string) (string, error)
+}
+
 type UserRepository struct {
 	Repo      *repository.UserRepo
 	JWTSecret string
