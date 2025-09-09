@@ -34,12 +34,14 @@ func main() {
 	ID1 := getEnv("ID1", "A")
 	ID2 := getEnv("ID2", "1")
 	port := getEnv("PORT", "8080")
+	grpcTarget := getEnv("GRPC_TARGET", "localhost:50051")
 
 	if sensorType == "" || ID1 == "" || ID2 == "" || port == "" {
 		log.Fatal("Please set SENSOR_TYPE, ID1, ID2, and PORT environment variables")
 	}
 
-	gen := grpcclient.NewGenerator("localhost:50051", 1*time.Second)
+	gen := grpcclient.NewGenerator(grpcTarget, 1*time.Second)
+	//gen := grpcclient.NewGenerator("localhost:50051", 1*time.Second)
 	gen.Start(sensorType, ID1, ID2)
 
 	e := echo.New()

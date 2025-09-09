@@ -1,0 +1,143 @@
+services:
+  # mysql database
+  mysql:
+    image: mysql:8.0
+    container_name: sensor_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Ved1234
+      MYSQL_DATABASE: sensor_db
+      MYSQL_USER: sensor_user
+      MYSQL_PASSWORD: Ved1234
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./microservice-b/database/migrations:/docker-entrypoint-initdb.d
+    networks:
+      - sensor-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+
+  # Microservice B (Data Receiver & API)
+  microservice-b:
+      build:
+        context: .
+        dockerfile: microservice-b/Dockerfile
+      container_name: sensor-microservice-b
+#      env_file:
+#        - ./microservice-b/db.env        # Load sensitive database credentials from file
+      environment:
+        DB_HOST: mysql
+        DB_PORT: 3306
+        DB_USER: root
+        DB_PASS: Ved1234
+        DB_NAME: sensor_db
+      ports:
+        - "8000:8000"  # REST API
+        - "50051:50051"  # gRPC
+      depends_on:
+        mysql:
+          condition: service_healthy
+      networks:
+        - sensor-network
+      restart: unless-stopped
+
+  # Microservice A - Instance 1
+  microservice-a-1:
+        build:
+          context: .
+          dockerfile: microservice-a/Dockerfile
+        container_name: sensor-microservice-a-1
+        environment:
+          ENV_FILE: /app/configs/humidity.env
+        volumes:
+          - ./configs:/app/configs:ro
+        ports:
+          - "8080:8080"
+        depends_on:
+          - microservice-b
+        networks:
+          - sensor-network
+        restart: unless-stopped
+
+  # Microservice A - Instance 2
+  microservice-a-2:
+    build:
+      context: .
+      dockerfile: microservice-a/Dockerfile
+    container_name: sensor-microservice-a-2
+    environment:
+      ENV_FILE: /app/configs/light.env
+    volumes:
+      - ./configs:/app/configs:ro
+    ports:
+      - "8081:8080"
+    depends_on:
+      - microservice-b
+    networks:
+      - sensor-network
+    restart: unless-stopped
+
+  # Microservice A - Instance 3
+  microservice-a-3:
+    build:
+      context: .
+      dockerfile: microservice-a/Dockerfile
+    container_name: sensor-microservice-a-3
+    environment:
+      ENV_FILE: /app/configs/motion.env
+    volumes:
+      - ./configs:/app/configs:ro
+    ports:
+      - "8082:8080"
+    depends_on:
+      - microservice-b
+    networks:
+      - sensor-network
+    restart: unless-stopped
+
+  # Microservice A - Instance 4
+  microservice-a-4:
+    build:
+      context: .
+      dockerfile: microservice-a/Dockerfile
+    container_name: sensor-microservice-a-4
+    environment:
+      ENV_FILE: /app/configs/pressure.env
+    volumes:
+      - ./configs:/app/configs:ro
+    ports:
+      - "8083:8080"
+    depends_on:
+      - microservice-b
+    networks:
+      - sensor-network
+    restart: unless-stopped
+
+  # Microservice A - Instance 5
+  microservice-a-5:
+    build:
+      context: .
+      dockerfile: microservice-a/Dockerfile
+    container_name: sensor-microservice-a-5
+    environment:
+      ENV_FILE: /app/configs/temperature.env
+    volumes:
+      - ./configs:/app/configs:ro
+    ports:
+      - "8084:8080"
+    depends_on:
+      - microservice-b
+    networks:
+      - sensor-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  sensor-network:
+    driver: bridge

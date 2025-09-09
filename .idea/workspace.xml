@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/DATABASE_SCHEMA.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sensor_db.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-a/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice-b/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/humidity.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/humidity.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/light.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/motion.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/pressure.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/temperature.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/cmd/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,10 +102,11 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/ved/myProject/sensor-microservices",
+    "last_opened_file_path": "/home/ved/myProject/sensor-microservices/microservice-b/internal",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "DotEnv.SettingsForm"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -108,11 +116,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/microservice-b/internal" />
+      <recent name="$PROJECT_DIR$/microservice-b" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/microservice-b/internal/usecase" />
       <recent name="$PROJECT_DIR$/microservice-b/internal/repository" />
-      <recent name="$PROJECT_DIR$/microservice-b/internal/api/http" />
-      <recent name="$PROJECT_DIR$/microservice-a/internal/api/http" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/PostmanCollection" />
