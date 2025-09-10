@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-a/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice-b/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/humidity.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/humidity.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/light.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/motion.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/pressure.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/temperature.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-a/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/cmd/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,80 +31,80 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Test.TestGenerator_ConcurrentOperations in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestGenerator_MultipleDataGeneration in microservice-a/internal/api/grpcclient.executor": "Run",
-    "Go Test.TestGenerator_MultipleDataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestGenerator_Start_DataGeneration in microservice-a/internal/api/grpcclient.executor": "Run",
-    "Go Test.TestGenerator_Start_DataGeneration_WithRealServer in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestGenerator_Start_DataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor": "Run",
-    "Go Test.TestGenerator_Stop in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestGenerator_UpdateFrequency in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestGenerator_UpdateFrequency_DuringGeneration in microservice-a/internal/api/grpcclient.executor": "Run",
-    "Go Test.TestGenerator_UpdateFrequency_DuringGeneration_WithServer in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency in microservice-a/internal/api/http.executor": "Run",
-    "Go Test.TestHandler_UpdateFrequency_DurationString in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_InvalidFreq in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_Milliseconds in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_MissingFreq in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_NegativeFreq in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_Seconds in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestHandler_UpdateFrequency_ZeroFreq in microservice-a/internal/api/http.executor": "Coverage",
-    "Go Test.TestIsValidEmail in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestIsValidPassword in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestNewGenerator in microservice-a/internal/api/grpcclient.executor": "Coverage",
-    "Go Test.TestSensorHandler_EditSensors_InvalidBody in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestSensorHandler_GetSensors in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestSensorRepository_CountSensors in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestSensorRepository_DeleteSensors in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestSensorRepository_EditSensors in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestSensorRepository_GetSensors in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestSensorRepository_Save in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestUserHandler_Login in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserHandler_Login_InvalidRequest in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserHandler_Signup in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserHandler_Signup/success_signup in microservice-b/internal/api/http.executor": "Run",
-    "Go Test.TestUserHandler_Signup_InvalidEmail in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserHandler_Signup_InvalidPassword in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserHandler_Signup_MissingFields in microservice-b/internal/api/http.executor": "Coverage",
-    "Go Test.TestUserRepo_CreateUser in microservice-b/internal/repository.executor": "Run",
-    "Go Test.TestUserRepo_GetByEmail in microservice-b/internal/repository.executor": "Run",
-    "Go Test.TestUserRepo_UpdateLastLogin in microservice-b/internal/repository.executor": "Run",
-    "Go Test.TestUserRepository_CreateUser in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestUserRepository_GetByEmail_NotFound in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestUserRepository_GetByEmail_Success in microservice-b/internal/repository.executor": "Coverage",
-    "Go Test.TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestUserRepository_Login_Success in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestUserRepository_Signup_EmailAlreadyExists in microservice-b/internal/usecase.executor": "Coverage",
-    "Go Test.TestUserRepository_Signup_Success in microservice-b/internal/usecase.executor": "Coverage",
-    "Makefile Target.clean-proto.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.GoLinterPluginOnboarding": "true",
-    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/ved/myProject/sensor-microservices/microservice-b/internal",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "DotEnv.SettingsForm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.TestGenerator_ConcurrentOperations in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_MultipleDataGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_MultipleDataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration_WithRealServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_Start_DataGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_Stop in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency_DuringGeneration in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestGenerator_UpdateFrequency_DuringGeneration_WithServer in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency in microservice-a/internal/api/http.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_DurationString in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_InvalidFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_Milliseconds in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_MissingFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_NegativeFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_Seconds in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestHandler_UpdateFrequency_ZeroFreq in microservice-a/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestIsValidEmail in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestIsValidPassword in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestNewGenerator in microservice-a/internal/api/grpcclient.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorHandler_EditSensors_InvalidBody in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorHandler_GetSensors in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_CountSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_DeleteSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_EditSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_GetSensors in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestSensorRepository_Save in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Login in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Login_InvalidRequest in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup/success_signup in microservice-b/internal/api/http.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserHandler_Signup_InvalidEmail in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup_InvalidPassword in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserHandler_Signup_MissingFields in microservice-b/internal/api/http.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepo_CreateUser in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepo_GetByEmail in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepo_UpdateLastLogin in microservice-b/internal/repository.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestUserRepository_CreateUser in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_GetByEmail_NotFound in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_GetByEmail_Success in microservice-b/internal/repository.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_EmailNotFound in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_Success in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Login_WrongPassword in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Signup_EmailAlreadyExists in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Go Test.TestUserRepository_Signup_Success in microservice-b/internal/usecase.executor&quot;: &quot;Coverage&quot;,
+    &quot;Makefile Target.clean-proto.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginOnboarding&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.GoLinterPluginStorageMigration&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ved/myProject/sensor-microservices/microservice-b/internal&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;DotEnv.SettingsForm&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/microservice-b/internal" />
@@ -204,8 +195,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-gosdk-f466f9b0953e-3d2cccfc42a2-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-252.25557.175" />
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-GO-252.25557.175" />
+        <option value="bundled-gosdk-f466f9b0953e-3d2cccfc42a2-org.jetbrains.plugins.go.sharedIndexes.bundled-GO-252.25557.187" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-GO-252.25557.187" />
       </set>
     </attachedChunks>
   </component>
