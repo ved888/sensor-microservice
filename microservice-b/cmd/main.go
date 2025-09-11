@@ -84,10 +84,13 @@ func main() {
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
 	// Run Echo server in goroutine
 	go func() {
 		log.Printf("Microservice B REST server running on :%s", port)
-		if err := e.Start(":" + port); err != nil && err != http.ErrServerClosed {
+		if err := e.Start("0.0.0.0:" + port); err != nil && err != http.ErrServerClosed {
 			log.Fatal(err)
 		}
 	}()

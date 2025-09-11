@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/light.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/motion.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/pressure.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/temperature.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/database/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.down.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

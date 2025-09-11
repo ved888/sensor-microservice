@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log"
 	"microservice-b/internal/repository"
 	"microservice-b/model"
 	"net/http"
@@ -42,14 +43,25 @@ func (h *SensorHandler) GetSensors(c echo.Context) error {
 	if id2 := c.QueryParam("id2"); id2 != "" {
 		filters["id2"] = id2
 	}
-	loc, _ := time.LoadLocation("Asia/Kolkata")
+	loc, err := time.LoadLocation("Asia/Kolkata")
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "internal server error"})
+	}
 
 	if from := c.QueryParam("from"); from != "" {
-		t, _ := time.Parse(time.RFC3339, from) // parsed in UTC
-		filters["from"] = t.In(loc)            // convert to IST
+		t, err := time.Parse(time.RFC3339, from)
+		if err != nil {
+			log.Printf("Error parsing 'from': %v", err)
+			return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid 'from' time format"})
+		}
+		filters["from"] = t.In(loc)
 	}
 	if to := c.QueryParam("to"); to != "" {
-		t, _ := time.Parse(time.RFC3339, to)
+		t, err := time.Parse(time.RFC3339, to)
+		if err != nil {
+			log.Printf("Error parsing 'to': %v", err)
+			return c.JSON(http.StatusBadRequest, map[string]string{"error": "invalid 'to' time format"})
+		}
 		filters["to"] = t.In(loc)
 	}
 

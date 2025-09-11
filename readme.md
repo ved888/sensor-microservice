@@ -180,23 +180,23 @@ make run-a
 ``` 
 #Temperature
  cd microservice-a
- ENV_FILE=../configs/temperature.env go run cmd/main.go
+ ENV_FILE=../configs/temperature.env PORT=8084 go run cmd/main.go
 
 # Humidity
 cd microservice-a
-ENV_FILE=../configs/humidity.env go run cmd/main.go
+ENV_FILE=../configs/humidity.env PORT=8080 go run cmd/main.go
 
 # Pressure
 cd microservice-a
-ENV_FILE=../configs/pressure.env go run cmd/main.go
+ENV_FILE=../configs/pressure.env PORT=8083 go run cmd/main.go
 
 # Light
 cd microservice-a
-ENV_FILE=../configs/light.env go run cmd/main.go
+ENV_FILE=../configs/light.env PORT=8081 go run cmd/main.go
 
 # Motion
 cd microservice-a
-ENV_FILE=../configs/motion.env go run cmd/main.go
+ENV_FILE=../configs/motion.env PORT=8082 go run cmd/main.go
 ```
 
 ### 🛑 Stop All Services

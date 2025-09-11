@@ -41,7 +41,10 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main cmd/main.go
 FROM alpine:latest
 
 # Install CA certificates to handle HTTPS requests in the app
-RUN apk --no-cache add ca-certificates
+RUN apk update && apk add --no-cache ca-certificates tzdata
+
+# Set timezone environment variable
+ENV TZ=Asia/Kolkata
 
 # Set working directory inside the container
 WORKDIR /root/

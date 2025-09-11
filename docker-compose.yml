@@ -4,15 +4,15 @@ services:
     image: mysql:8.0
     container_name: sensor_mysql
     environment:
-      MYSQL_ROOT_PASSWORD: Ved1234
+      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: sensor_db
       MYSQL_USER: sensor_user
-      MYSQL_PASSWORD: Ved1234
+      MYSQL_PASSWORD: sensor_password
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./microservice-b/database/migrations:/docker-entrypoint-initdb.d
+#      - ./microservice-b/database/migrations:/docker-entrypoint-initdb.d
     networks:
       - sensor-network
     healthcheck:
@@ -28,16 +28,19 @@ services:
         dockerfile: microservice-b/Dockerfile
       container_name: sensor-microservice-b
 #      env_file:
-#        - ./microservice-b/db.env        # Load sensitive database credentials from file
+#        - ./microservice-b/db.env
       environment:
         DB_HOST: mysql
         DB_PORT: 3306
-        DB_USER: root
-        DB_PASS: Ved1234
+        DB_USER: sensor_user
+        DB_PASS: sensor_password
         DB_NAME: sensor_db
+        TZ: Asia/Kolkata
       ports:
-        - "8000:8000"  # REST API
-        - "50051:50051"  # gRPC
+        - "8000:8000"
+        - "50051:50051"
+      volumes:
+        - ./microservice-b/database/migrations:/app/database/migrations
       depends_on:
         mysql:
           condition: service_healthy

@@ -2,7 +2,6 @@ package database
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 
@@ -10,15 +9,14 @@ import (
 	"github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/jmoiron/sqlx"
-	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 )
 
 func DbConnection() (*sqlx.DB, error) {
-	err := godotenv.Load("db.env")
-	if err != nil {
-		log.Println("Warning: .env file not loaded")
-	}
+	//err := godotenv.Load("db.env")
+	//if err != nil {
+	//	log.Println("Warning: .env file not loaded")
+	//}
 
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
