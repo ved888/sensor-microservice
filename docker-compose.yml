@@ -36,6 +36,7 @@ services:
         DB_PASS: sensor_password
         DB_NAME: sensor_db
         TZ: Asia/Kolkata
+        AUTH_SECRET: my_super_secret_key
       ports:
         - "8000:8000"
         - "50051:50051"

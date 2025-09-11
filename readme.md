@@ -3,42 +3,160 @@
 This project demonstrates a microservices setup with gRPC communication between services.
 
 ---
+## 🛠 Prerequisites
+
+- Go >= 1.18 ([Install guide](https://golang.org/doc/install))
+- Docker & Docker Compose ([Install guide](https://docs.docker.com/get-docker/))
+- Protocol Buffers compiler (`protoc`) >= 3.20 ([Install guide](https://grpc.io/docs/protoc-installation/))
+- MySQL 8+ running locally or via Docker
+
+## 📥 Download / Clone Project
+## Local Setup
+
+1.Refer to [the official guide to install Go](https://golang.org/doc/install).
+2.Install Go version _1.18_ or higher.
+
+```sh
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
+```
+
+These should be applied in your
+[`~/.bash_profile`](https://www.baeldung.com/linux/bashrc-vs-bash-profile-vs-profile).
+
+For Mac users using Catalina or newer (or if you're using zsh), you should add this to
+[`~/.zshenv`](https://carlosroso.com/the-right-way-to-migrate-your-bash-profile-to-zsh/) instead.
+
+3. Test if you have Go properly installed by running `go version` in your terminal.
+
+4. Clone the project by using below command
+
+```sh
+git clone git@github.com:ved888/sensor-microservice.git
+cd sensor-microservice
+```
 
 ## 📂 Project Structure
 
 ```bash
 .
+├── ARCHITECTURE.md
+├── configs
+│   ├── humidity.env
+│   ├── light.env
+│   ├── motion.env
+│   ├── pressure.env
+│   └── temperature.env
+├── DATABASE_SCHEMA.md
+├── docker-compose.yml
+├── Makefile
 ├── microservice-a
-│   ├── cmd
-│   │   └── main.go
-│   ├── internal
-│   │   ├── api
-│   │   │   ├── grpcclient
-│   │   │   └── http
-│   │   ├── repository
-│   │   └── usecase
-│   ├── model
-│   └── pb
+│   ├── cmd
+│   │   └── main.go
+│   ├── Dockerfile
+│   ├── docs
+│   │   ├── docs.go
+│   │   ├── swagger.json
+│   │   └── swagger.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   ├── internal
+│   │   └── api
+│   │       ├── grpcclient
+│   │       │   ├── grpcclient.go
+│   │       │   └── grpcclient_test.go
+│   │       └── http
+│   │           ├── http.go
+│   │           └── http_test.go
+│   ├── model
+│   │   └── sensor_reading.go
+│   └── pb
+│       └── shared-proto
+│           ├── sensor_grpc.pb.go
+│           └── sensor.pb.go
 ├── microservice-b
-│   ├── cmd
-│   │   └── main.go
-│   ├── database
-│   │   ├── db.go
-│   │   └── migrations
-│   ├── internal
-│   │   ├── api
-│   │   │   ├── grpcclient
-│   │   │   └── http
-│   │   ├── repository
-│   │   └── usecase
-│   ├── middleware
-│   ├── model
-│   └── pb
-├── shared-proto
-│   └── sensor.proto
-└── Makefile
+│   ├── cmd
+│   │   └── main.go
+│   ├── database
+│   │   ├── db.go
+│   │   └── migrations
+│   │       ├── 0001_create_users_table.down.sql
+│   │       ├── 0001_create_users_table.up.sql
+│   │       ├── 0002_create_sensor_readings_table.down.sql
+│   │       ├── 0002_create_sensor_readings_table.up.sql
+│   │       ├── 0003_alter_user_table.down.sql
+│   │       └── 0003_alter_user_table.up.sql
+│   ├── db.env
+│   ├── Dockerfile
+│   ├── docs
+│   │   ├── docs.go
+│   │   ├── swagger.json
+│   │   └── swagger.yaml
+│   ├── go.mod
+│   ├── go.sum
+│   ├── internal
+│   │   ├── api
+│   │   │   ├── grpc
+│   │   │   │   └── grpc.go
+│   │   │   └── http
+│   │   │       ├── sensor.go
+│   │   │       ├── sensor_test.go
+│   │   │       ├── user.go
+│   │   │       └── user_test.go
+│   │   ├── repository
+│   │   │   ├── sensor_repository.go
+│   │   │   ├── sensor_repository_test.go
+│   │   │   ├── user.go
+│   │   │   └── user_repository_test.go
+│   │   └── usecase
+│   │       ├── user.go
+│   │       └── user_usecase_test.go
+│   ├── middleware
+│   │   └── jwt.go
+│   ├── model
+│   │   ├── sensor_reading.go
+│   │   └── user.go
+│   ├── pb
+│   │   └── shared-proto
+│   │       ├── sensor_grpc.pb.go
+│   │       └── sensor.pb.go
+│   ├── README.md
+│   └── utils
+│       └── utils.go
+├── postmanCollection
+│   ├── sensor_microservice_api_Enviroment.postman_environment.json
+│   └── sensor_microservice_api.postman_collection.json
+├── readme.md
+├── sensor_db.png
+└── shared-proto
+    └── sensor.proto
 ````
-# 🚀 Protocol Buffers & gRPC Code Generation
+
+## 🏗️ Architecture & Database
+This project includes dedicated documentation for system architecture and database schema:
+### Architecture
+* **File**: [architecture.md](ARCHITECTURE.md)
+* **Contains**:
+  * System overview and component details
+  * Microservice A instances (data generators) and Microservice B (data receiver + API)
+  * Data flow diagrams for sensor data generation and API requests
+  * Deployment & scalability considerations
+  * Security and JWT authentication overview
+  
+You can visualize the full architecture using the included Mermaid diagrams.
+
+### Database Schema
+* **File**: [database_schema.md](DATABASE_SCHEMA.md)
+* **Contains**:
+  * Entity Relationship Diagram (ERD)
+  * Users table and sensor readings table with columns, data types, and constraints
+  * Indexing strategy and query patterns
+  * Sample SQL queries for filtering, aggregation, and pagination
+  * Performance considerations and migration history
+
+These documents provide a deeper understanding of how microservices interact, how data flows through the system, and how the database is structured for scalability and performance.
+
+## 🚀 Protocol Buffers & gRPC Code Generation
 
 This project uses **Protocol Buffers (protobuf)** and **gRPC** for communication between microservices.  
 The `.proto` definitions are stored in the [`shared-proto/`](./shared-proto) folder.
@@ -70,7 +188,8 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 🔨 Generate Go code
 
 Run the following commands from the project root:
-```# Generate gRPC & protobuf code for Microservice A
+```bash
+# Generate gRPC & protobuf code for Microservice A
 protoc --go_out=microservice-a/pb --go-grpc_out=microservice-a/pb \
   --proto_path=shared-proto shared-proto/sensor.proto
 
@@ -79,18 +198,18 @@ protoc --go_out=microservice-b/pb --go-grpc_out=microservice-b/pb \
   --proto_path=shared-proto shared-proto/sensor.proto
 ```
 or
-```
+```bash
 make proto-gen
 ```
 
 ### Clean Generated Files
 If you want to remove generated files:
-```
+```bash
 make clean-proto
 ```
 After running, you will see generated files in each microservice:
 
-```
+```bash
 microservice-a/pb/
  ├── sensor.pb.go
  └── sensor_grpc.pb.go
@@ -107,119 +226,106 @@ Both microservices expose **REST APIs** documented using **Swagger (swaggo)**.
 ### 📦 Installation
 
 Install `swag` CLI tool:
-```
+```bash
 go install github.com/swaggo/swag/cmd/swag@latest
 ```
 
 ### 🔨 Generate Swagger Docs
-
-From the root of the project, run:
+Generate Swagger documentation using swag:
+```bash
+# Using Makefile
+make swagger-gen
 ```
-# Generate Swagger docs for Microservice A
-cd microservice-a
-swag init -g cmd/main.go -o docs
-
-# Generate Swagger docs for Microservice B
-cd ../microservice-b
-swag init -g cmd/main.go -o docs
-```
-This will create a `docs/` folder in each service containing `swagger.json` and `swagger.yaml`.
-
-### 🚀 Run Services with Swagger
-
-Start each service:
-```
-# Start Microservice A (REST on :8080)
-cd microservice-a
-go run cmd/main.go
-
-# Start Microservice B (REST on :8081)
-cd microservice-b
-go run cmd/main.go
-```
+Swagger docs are generated in `docs/` inside each microservice:
+* Microservice A → `microservice-a/docs/swagger.json`
+* Microservice B → `microservice-b/docs/swagger.json`
 
 ### 🌐 Access Swagger UI
-* **Microservice A Swagger UI** → http://localhost:8080/swagger/index.html
-* **Microservice B Swagger UI** → http://localhost:8081/swagger/index.html
+* **Microservice B Swagger UI** → http://localhost:8000/swagger/index.html
+* **Microservice A-1 (Humidity) Swagger UI** → http://localhost:8080/swagger/index.html
+* **Microservice A-2 (Light) Swagger UI** → http://localhost:8081/swagger/index.html
+* **Microservice A-3 (Motion) Swagger UI** → http://localhost:8082/swagger/index.html
+* **Microservice A-4 (Pressure) Swagger UI** → http://localhost:8083/swagger/index.html
+* **Microservice A-5 (Temperature) Swagger UI** → http://localhost:8084/swagger/index.html
 
-# ▶️ Running the Microservices
+## ▶️ Running the Microservices
 
-This project uses a **Makefile** to simplify running and stopping the services.  
+This project uses to simplify running and stopping the services.  
 Microservice **B** must start first (it provides gRPC + REST APIs), followed by Microservice **A** (data generator + gRPC client).
 
 ---
 
-## 🏃 Run All Services
+### 🏃 Run All Services
 
 ```bash
-make run
+make docker-up
 ```
 This will:
 
-* Start **Microservice B** (gRPC on `:50051`, REST on `:8081`)
-* Then start Microservice A (REST on `:8080`)
-
-Logs will be written to:
-* `microservice-a/microservice-a.log`
-* `microservice-b/microservice-b.log`
-
-Process IDs are stored in `.pid` files for easier shutdown.
+* Start **Microservice B** (gRPC on `:50051`, REST on `:8000`)
+* Starts Microservice A instances (REST on :8080–:8084 depending on env)
 
 ### 🖥️ Start Individually
+```bash
+# Microservice B
+make docker-up-b
 
-* Start **Microservice B** only:
+# Microservice A (all instances)
+make docker-up-a
 ```
-make run-b
-```
-
-* Start **Microservice A** only:
-```
-make run-a
-```
-* start multiple Service A
-``` 
-#Temperature
- cd microservice-a
- ENV_FILE=../configs/temperature.env PORT=8084 go run cmd/main.go
-
-# Humidity
-cd microservice-a
-ENV_FILE=../configs/humidity.env PORT=8080 go run cmd/main.go
-
-# Pressure
-cd microservice-a
-ENV_FILE=../configs/pressure.env PORT=8083 go run cmd/main.go
-
-# Light
-cd microservice-a
-ENV_FILE=../configs/light.env PORT=8081 go run cmd/main.go
-
-# Motion
-cd microservice-a
-ENV_FILE=../configs/motion.env PORT=8082 go run cmd/main.go
-```
-
 ### 🛑 Stop All Services
+```bash
+# Stop all
+make docker-down
 
-Gracefully stop both services:
-```
-make clean
-```
-This will:
+# Stop Microservice A only
+make docker-down-a
 
-* Kill processes saved in `.pid` files
-* Free up ports `8080`, `8081`, and `50051`
+# Stop Microservice B only
+make docker-down-b
+```
+
+### 📜 Logs
+```bash
+# All logs
+make logs
+
+# Microservice A (all instances)
+make logs-a
+
+# Microservice B
+make logs-b
+```
+
+### 🧪 Testing
+Run tests using Makefile:
+```bash
+# All tests
+make test
+
+# Microservice A only
+make test-a
+
+# Microservice B only
+make test-b
+
+# Tests with coverage
+make test-coverage
+```
+Coverage reports are generated in `coverage.html` for each service.
 
 ### 🌐 Access Services
 * Microservice A REST API → http://localhost:8080
-* Microservice B REST API → http://localhost:8081
+* Microservice B REST API → http://localhost:8000
 * Microservice B gRPC → `localhost:50051`
 
 ## 🔐 Authentication (JWT-based)
 This project uses JSON Web Tokens (JWT) to authenticate users and protect API endpoints. Authentication is implemented in Microservice B, which handles user signup, login, and validation for accessing protected routes.
 
 ### 📋 How It Works
-#### 1. Signup (POST /signup)
+Microservice B implements JWT authentication for API routes under /api.
+
+#### 1. Signup (`POST /signup`)
 Allows users to register by providing:
 * `first_name` (optional)
 * `last_name `(optional)
@@ -228,7 +334,7 @@ Allows users to register by providing:
 * `role` (optional, defaults to "analyst", valid values: "admin", "analyst")
 
 Example request:
-```
+```bash
 curl -X POST http://localhost:8081/signup \
   -H "Content-Type: application/json" \
   -d '{
@@ -240,13 +346,13 @@ curl -X POST http://localhost:8081/signup \
   }'
 ```
 
-#### 1. Login (POST /login)
+#### 2. Login (`POST /login`)
 Allows users to authenticate and obtain a JWT token by providing:
 * `email` (required)
 * `password` (required)
 
 Example request:
-```
+```bash
 curl -X POST http://localhost:8081/login \
   -H "Content-Type: application/json" \
   -d '{
@@ -255,7 +361,7 @@ curl -X POST http://localhost:8081/login \
   }'
 ```
 Example response:
-```
+```bash
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
@@ -263,12 +369,12 @@ Example response:
 #### 3. Accessing Protected Routes
 Routes under `/api` are protected and require the JWT token.
 Add the token in the request header as:
-```
+```bash
 Authorization: Bearer <JWT_TOKEN>
 ```
 Example:
 
-```
+```bash
 curl -X GET "http://localhost:8081/api/sensors?id1=A&id2=1&page=1&limit=10" \
   -H "accept: application/json" \
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZDEyM0BnbWFpbC5jb20iLCJleHAiOjE3NTczMzMzMjUsInJvbGUiOiJhZG1pbiIsInVzZXJfaWQiOjF9.ND6vcnN0bbJbS6pVh2Cdx_DY6LONSfB_hjyWFyXhbTA"

@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="29bb6986-4935-4fc6-830d-647ce04fd3b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/light.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/light.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/motion.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/motion.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/pressure.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/pressure.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/temperature.env" beforeDir="false" afterPath="$PROJECT_DIR$/configs/temperature.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-a/internal/api/grpcclient/grpcclient_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-a/microservice-a.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice-b/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/database/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/database/migrations/0003_alter_user_table.down.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor.go" beforeDir="false" afterPath="$PROJECT_DIR$/microservice-b/internal/api/http/sensor.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/microservice-b.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice-b/migrate" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +102,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ved/myProject/sensor-microservices/microservice-b/internal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ved/myProject/sensor-microservices/microservice-b&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -118,8 +116,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/microservice-b/internal" />
       <recent name="$PROJECT_DIR$/microservice-b" />
+      <recent name="$PROJECT_DIR$/microservice-b/internal" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/microservice-b/internal/usecase" />
       <recent name="$PROJECT_DIR$/microservice-b/internal/repository" />

@@ -147,6 +147,7 @@ func TestGenerator_ConcurrentOperations(t *testing.T) {
 	id2 := "1"
 
 	gen.Start(sensorType, id1, id2)
+	defer gen.Stop() // ensure cleanup
 
 	// Concurrent frequency updates
 	go func() {
@@ -156,16 +157,13 @@ func TestGenerator_ConcurrentOperations(t *testing.T) {
 		}
 	}()
 
-	time.Sleep(200 * time.Millisecond)
-	gen.Stop()
-
-	// Assert at least one data item
+	// Wait for at least one data item, max 1 second
 	select {
 	case d := <-gen.dataCh:
 		assert.Equal(t, sensorType, d.SensorType)
 		assert.Equal(t, id1, d.Id1)
 		assert.Equal(t, id2, d.Id2)
-	default:
+	case <-time.After(1 * time.Second):
 		t.Error("Expected data generated during concurrent updates")
 	}
 }

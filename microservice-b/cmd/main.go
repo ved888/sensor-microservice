@@ -46,10 +46,14 @@ func main() {
 	sensorRepository := repository.NewSensorRepository(db)
 	userRepo := repository.NewUserRepository(db)
 
+	jwtSecret := os.Getenv("AUTH_SECRET")
+	if jwtSecret == "" {
+		log.Fatal("AUTH_SECRET environment variable not set")
+	}
 	// Usecases
 	userUseCase := &usecase.UserRepository{
 		Repo:      userRepo,
-		JWTSecret: "my-secret-key",
+		JWTSecret: jwtSecret,
 	}
 
 	// Start gRPC server in goroutine
