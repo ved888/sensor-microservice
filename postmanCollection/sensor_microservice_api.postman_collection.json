@@ -175,6 +175,13 @@
 										"type": "text/javascript",
 										"packages": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -327,7 +334,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{base_url_b}}/api/sensors?from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:42Z",
+							"raw": "{{base_url_b}}/api/sensors?from=2025-09-06T08:28:42Z&to=2025-09-11T08:29:42Z",
 							"host": [
 								"{{base_url_b}}"
 							],
@@ -338,13 +345,11 @@
 							"query": [
 								{
 									"key": "from",
-									"value": "2025-09-06T08:28:42Z",
-									"description": "Start timestamp (RFC3339)"
+									"value": "2025-09-06T08:28:42Z"
 								},
 								{
 									"key": "to",
-									"value": "2025-09-06T08:29:42Z",
-									"description": "End timestamp (RFC3339)"
+									"value": "2025-09-11T08:29:42Z"
 								}
 							]
 						}
@@ -370,7 +375,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{base_url_b}}/api/sensors?id1=A&id2=1&from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:42Z",
+							"raw": "{{base_url_b}}/api/sensors?id1=B&id2=2&from=2025-09-10T08:28:42Z&to=2025-09-11T08:29:42Z",
 							"host": [
 								"{{base_url_b}}"
 							],
@@ -381,20 +386,20 @@
 							"query": [
 								{
 									"key": "id1",
-									"value": "A"
+									"value": "B"
 								},
 								{
 									"key": "id2",
-									"value": "1"
+									"value": "2"
 								},
 								{
 									"key": "from",
-									"value": "2025-09-06T08:28:42Z",
+									"value": "2025-09-10T08:28:42Z",
 									"description": "Start timestamp (RFC3339)"
 								},
 								{
 									"key": "to",
-									"value": "2025-09-06T08:29:42Z",
+									"value": "2025-09-11T08:29:42Z",
 									"description": "End timestamp (RFC3339)"
 								}
 							]
@@ -538,7 +543,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url_b}}/api/sensors?id=A",
+							"raw": "{{base_url_b}}/api/sensors?id=B",
 							"host": [
 								"{{base_url_b}}"
 							],
@@ -549,7 +554,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "A"
+									"value": "B"
 								}
 							]
 						}
@@ -577,7 +582,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url_b}}/api/sensors?id1=A&Id2=1&from=2025-09-06T08:28:42Z&to=2025-09-06T08:29:55Z",
+							"raw": "{{base_url_b}}/api/sensors?id1=A&Id2=1&from=2025-09-10T08:28:42Z&to=2025-09-11T08:29:55Z",
 							"host": [
 								"{{base_url_b}}"
 							],
@@ -596,11 +601,11 @@
 								},
 								{
 									"key": "from",
-									"value": "2025-09-06T08:28:42Z"
+									"value": "2025-09-10T08:28:42Z"
 								},
 								{
 									"key": "to",
-									"value": "2025-09-06T08:29:55Z"
+									"value": "2025-09-11T08:29:55Z"
 								}
 							]
 						}
